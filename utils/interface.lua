@@ -26,3 +26,10 @@ function newButton(img, x, y, text)
 
 	return button
 end
+
+function withColor(color, callback)
+	local r, g, b, a = love.graphics.getColor()
+	love.graphics.setColor(color)
+	callback()
+	love.graphics.setColor({r,g,b,a})
+end
