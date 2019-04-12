@@ -1,11 +1,24 @@
-function love.load()
+-- PROJECT TEMPLATE --
+-- MAIN SCRIPT --
 
+-- Love functions --
+function love.load()
+    
 end
 
-function love.update()
-
+function love.update(dt)
+    
 end
 
 function love.draw()
-  love.graphics.print("New Project")
+    
 end
+--####--
+
+-- Events --
+function love.keypressed(key, scancode, isrepeat)
+	if key == "escape" then
+		love.event.quit()
+	end
+end
+--####--
