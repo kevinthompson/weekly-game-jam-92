@@ -26,7 +26,7 @@ scenes.prototypes.runner = {
 
       for i=#self.obstacles,1,-1 do
         local obstacle = self.obstacles[i]
-        obstacle.body:setLinearVelocity(-150, 0)
+        obstacle.body:setLinearVelocity(-200, 0)
 
         if obstacle.body:isTouching(self.player.body) then
           self.gameOver = true
@@ -96,11 +96,11 @@ scenes.prototypes.runner = {
   player={
     x=100,
     y=375,
-    width=10,
-    height=25,
+    width=64,
+    height=64,
 
     jumping=false,
-    jumpSpeed=32,
+    jumpSpeed=400,
 
     load=function(self, attributes)
       attributes = attributes or {}
@@ -110,7 +110,7 @@ scenes.prototypes.runner = {
       end
 
       self.body = love.physics.newBody(game.scene.world, self.x, self.y, "dynamic")
-      self.shape = love.physics.newRectangleShape(self.width, self.height)
+      self.shape = love.physics.newRectangleShape(self.width-16, self.height-16)
       self.fixture = love.physics.newFixture(self.body, self.shape)
       self.spritesheet = lg.newImage("assets/PlayerIdle.png")
       self.sprites = makeSprites(self.spritesheet, 64)
@@ -124,7 +124,9 @@ scenes.prototypes.runner = {
     end,
 
     draw=function(self)
-      love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
+      local x, y = self.body:getPosition()
+      -- love.graphics.polygon("fill", self.body:getWorldPoints(self.shape:getPoints()))
+      love.graphics.draw(self.spritesheet, self.sprites[1][1], x-self.width/2, y-(self.height+16)/2)
     end
   },
 
@@ -157,7 +159,7 @@ scenes.prototypes.runner = {
 
   spawnObstacle = function(self)
     local obstacle = {}
-    local width = math.random(10,40)
+    local width = math.random(10,20)
     local height = math.random(10,50)
 
     obstacle.color = {1,0,0}
