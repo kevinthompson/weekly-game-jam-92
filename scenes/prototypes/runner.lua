@@ -101,6 +101,10 @@ scenes.prototypes.runner = {
 
     jumping=false,
     jumpSpeed=32,
+    
+    clock=0,
+    frameDelay=1,
+    frame=1,
 
     load=function(self, attributes)
       attributes = attributes or {}
@@ -112,6 +116,8 @@ scenes.prototypes.runner = {
       self.body = love.physics.newBody(game.scene.world, self.x, self.y, "dynamic")
       self.shape = love.physics.newRectangleShape(self.width, self.height)
       self.fixture = love.physics.newFixture(self.body, self.shape)
+      self.spritesheet = lg.newImage("assets/PlayerIdle.png")
+      self.sprites = makeSprites(self.spritesheet, 64)
     end,
 
     update=function(self, dt)

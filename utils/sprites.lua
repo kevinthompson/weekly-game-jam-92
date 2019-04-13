@@ -1,6 +1,7 @@
 -- returns a table of quads, cell sizes & number of cells
-function makeSprite(img, cellSizeX, cellSizeY)
-  local lg = love.graphics
+function makeSprites(img, cellSizeX, cellSizeY)
+ cellSizeY = cellSizeY or cellSizeX
+ local lg = love.graphics
 	local sprites = {}
 	local nx, ny = img:getWidth()/cellSizeX, img:getHeight()/cellSizeY
 	-- cell size of sprites
