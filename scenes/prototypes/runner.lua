@@ -101,10 +101,6 @@ scenes.prototypes.runner = {
 
     jumping=false,
     jumpSpeed=32,
-    
-    clock=0,
-    frameDelay=1,
-    frame=1,
 
     load=function(self, attributes)
       attributes = attributes or {}

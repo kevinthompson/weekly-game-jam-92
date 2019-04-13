@@ -8,22 +8,22 @@ game={
 }
 
 function love.load()
-  game.width, game.height = lg.getDimensions()
-  game.scene:load()
+ game.width, game.height = lg.getDimensions()
+ game.scene:load()
 end
 
 function love.update(dt)
-  game.scene:update(dt)
+	game.scene:update(dt)
 end
 
 function love.draw()
-  game.scene:draw()
+	game.scene:draw()
 end
 
 function love.keypressed(key, scancode, isrepeat)
-  if game.scene.keypressed then
-    game.scene:keypressed(key, scancode, isrepeat)
-  end
+	if game.scene.keypressed then
+		game.scene:keypressed(key, scancode, isrepeat)
+	end
 
 	if key == "escape" then
 		love.event.quit()
